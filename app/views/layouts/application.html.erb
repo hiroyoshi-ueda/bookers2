@@ -17,11 +17,36 @@
         </nav>
         <nav>
           <ul class="nav-navbar-nav navbar-right">
-            <li>
-              <a span class="glyphicon glyphicon-home" aria-hidden="true" href="/"></span> Home</a>
-              <a span class="glyphicon glyphicon-link" aria-hidden="true" href="/about"></span> About</a>
-              <a span class="glyphicon glyphicon-edit" aria-hidden="true" href="/users/sign_up"></span> signup</a>
-              <a span class="glyphicon glyphicon-log-in" aria-hidden="true" href="/users/sign_in"></span> login</a>
+            <% if user_signed_in? %>
+              <li class="">
+                <%= link_to user_path(current_user) do %>
+                  <span class= "glyphicon glyphicon-home" aria-hidden="true"> Home</span>
+                <% end %>
+                <%= link_to users_path do %>
+                  <span class= "glyphicon glyphicon-user" aria-hidden="true"> Users</span>
+                <% end %>
+                <%= link_to books_path do %>
+                  <span class= "glyphicon glyphicon-book" aria-hidden="true"> Books</span>
+                <% end %>
+                <%= link_to destroy_user_session_path ,method: :delete do  %>
+                  <span class= "glyphicon glyphicon-log-out" aria-hidden="true"> log out</span>
+                <% end %>
+
+              <% else %>
+                <li class="">
+                  <%= link_to  root_path do %>
+                    <span class= "glyphicon glyphicon-home" aria-hidden="true"> Home</span>
+                  <% end %>
+                  <%= link_to about_path do %>
+                    <span class= "glyphicon glyphicon-link" aria-hidden="true"> About</span>
+                  <% end %>
+                  <%= link_to new_user_registration_path do %>
+                    <span class="glyphicon glyphicon-edit" aria-hidden="true"> Sign up</span>
+                  <% end %>
+                  <%= link_to user_session_path do %>
+                    <span class="glyphicon glyphicon-log-in" aria-hidden="true"> login</span>
+                  <% end %>
+            <% end %>
             </li>
           </ul>
         </nav>
