@@ -29,7 +29,7 @@
                   <span class= "glyphicon glyphicon-book" aria-hidden="true"> Books</span>
                 <% end %>
                 <%= link_to destroy_user_session_path ,method: :delete do  %>
-                  <span class= "glyphicon glyphicon-log-out" aria-hidden="true"> log out</span>
+                  <span class= "glyphicon glyphicon-log-out" aria-hidden="true"> logout</span>
                 <% end %>
 
               <% else %>
@@ -37,11 +37,11 @@
                   <%= link_to  root_path do %>
                     <span class= "glyphicon glyphicon-home" aria-hidden="true"> Home</span>
                   <% end %>
-                  <%= link_to about_path do %>
+                  <%= link_to home_about_path do %>
                     <span class= "glyphicon glyphicon-link" aria-hidden="true"> About</span>
                   <% end %>
                   <%= link_to new_user_registration_path do %>
-                    <span class="glyphicon glyphicon-edit" aria-hidden="true"> Sign up</span>
+                    <span class="glyphicon glyphicon-edit" aria-hidden="true"> sign up</span>
                   <% end %>
                   <%= link_to user_session_path do %>
                     <span class="glyphicon glyphicon-log-in" aria-hidden="true"> login</span>
@@ -52,6 +52,12 @@
         </nav>
       </div>
     </header>
+    
+    <div class="container">
+      <% if flash[:notice] %>
+        <p><%= flash[:notice] %></p>
+      <% end %>
+    </div>
 
     <div class="container">
       <%= yield %>
